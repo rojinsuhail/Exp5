@@ -41,84 +41,84 @@ ry slightly with changes to the train-test split,
 
 
 ## Program
-import matplotlib.pyplot as plt
-
-from sklearn.datasets import load_digits
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import accuracy_score, classification_report
-
-# Load Digits dataset
-digits = load_digits()
-X = digits.data
-y = digits.target
-
-# Split dataset
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
-
-# Standardize features
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
-
-# Create MLP model
-mlp = MLPClassifier(
-    hidden_layer_sizes=(64, 32),
-    max_iter=500,
-    random_state=42
-)
-
-# Train model
-mlp.fit(X_train, y_train)
-
-# Predict test data
-y_pred = mlp.predict(X_test)
-
-# Calculate accuracy
-accuracy = accuracy_score(y_test, y_pred)
-
-print("Test Accuracy:", accuracy)
-
-# Classification report
-print("\nClassification Report:")
-print(classification_report(y_test, y_pred))
-
-# Plot training loss curve
-plt.figure(figsize=(8, 5))
-plt.plot(mlp.loss_curve_)
-plt.title("MLP Training Loss Curve")
-plt.xlabel("Iterations")
-plt.ylabel("Loss")
-plt.grid(True)
-plt.show()
+    import matplotlib.pyplot as plt
+    
+    from sklearn.datasets import load_digits
+    from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.neural_network import MLPClassifier
+    from sklearn.metrics import accuracy_score, classification_report
+    
+    # Load Digits dataset
+    digits = load_digits()
+    X = digits.data
+    y = digits.target
+    
+    # Split dataset
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    
+    # Standardize features
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+    
+    # Create MLP model
+    mlp = MLPClassifier(
+        hidden_layer_sizes=(64, 32),
+        max_iter=500,
+        random_state=42
+    )
+    
+    # Train model
+    mlp.fit(X_train, y_train)
+    
+    # Predict test data
+    y_pred = mlp.predict(X_test)
+    
+    # Calculate accuracy
+    accuracy = accuracy_score(y_test, y_pred)
+    
+    print("Test Accuracy:", accuracy)
+    
+    # Classification report
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred))
+    
+    # Plot training loss curve
+    plt.figure(figsize=(8, 5))
+    plt.plot(mlp.loss_curve_)
+    plt.title("MLP Training Loss Curve")
+    plt.xlabel("Iterations")
+    plt.ylabel("Loss")
+    plt.grid(True)
+    plt.show()
 
 
 
 
 ## output
-
-Test Accuracy: 0.9666666666666667
-
-Classification Report:
-              precision    recall  f1-score   support
-
-           0       1.00      0.97      0.99        36
-           1       0.92      0.92      0.92        36
-           2       0.95      1.00      0.97        35
-           3       0.97      0.97      0.97        37
-           4       0.95      1.00      0.97        36
-           5       0.97      1.00      0.99        37
-           6       1.00      0.94      0.97        36
-           7       0.97      1.00      0.99        36
-           8       0.94      0.91      0.93        35
-           9       1.00      0.94      0.97        36
-
-    accuracy                           0.97       360
-   macro avg       0.97      0.97      0.97       360
-weighted avg       0.97      0.97      0.97       360
+    
+    Test Accuracy: 0.9666666666666667
+    
+    Classification Report:
+                  precision    recall  f1-score   support
+    
+               0       1.00      0.97      0.99        36
+               1       0.92      0.92      0.92        36
+               2       0.95      1.00      0.97        35
+               3       0.97      0.97      0.97        37
+               4       0.95      1.00      0.97        36
+               5       0.97      1.00      0.99        37
+               6       1.00      0.94      0.97        36
+               7       0.97      1.00      0.99        36
+               8       0.94      0.91      0.93        35
+               9       1.00      0.94      0.97        36
+    
+        accuracy                           0.97       360
+       macro avg       0.97      0.97      0.97       360
+    weighted avg       0.97      0.97      0.97       360
 
 
 
